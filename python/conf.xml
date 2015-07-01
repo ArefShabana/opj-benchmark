@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+
+input and output files are taken using
+-i and -o options respectively
+and this is assumed in the script!!
+
+-->
+<params>
+
+   <inputPath>../wshop</inputPath>
+   <outputPath>../wshop_out</outputPath>
+
+
+   <softwareList>
+      <software>
+         <UniqueName>OpenJPEG</UniqueName>
+         <cmd>/home/aref/Desktop/OpenJPEG_intact/trunk-build/bin/opj_compress</cmd>
+         <optionsString>-r 5</optionsString>
+         <outputImgExtension>jp2</outputImgExtension>
+      </software>
+      <software>
+         <UniqueName>OpenJPEG Multi-T</UniqueName>
+         <cmd>/home/aref/Desktop/OpenJPEG/trunk-build/bin/opj_compress</cmd>
+         <optionsString>-r 5 -threads 100</optionsString>
+         <outputImgExtension>jp2</outputImgExtension>
+      </software>
+      <software>
+         <UniqueName>Kakadu Sing</UniqueName>
+         <cmd>kdu_compress</cmd>
+         <optionsString>-rate 4.8 -num_threads 0</optionsString>
+         <outputImgExtension>j2c</outputImgExtension>
+      </software>
+      <software>
+         <UniqueName>Kakadu Multi-T</UniqueName>
+         <cmd>kdu_compress</cmd>
+         <optionsString>-rate 4.8 -num_threads 100</optionsString>
+         <outputImgExtension>j2c</outputImgExtension>
+      </software>
+   </softwareList>
+
+</params>

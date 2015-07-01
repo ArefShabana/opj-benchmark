@@ -1,0 +1,57 @@
+This is a benckmark tool to evaluate the time and the memory consumed by JPEG2000 implementations (mainly OpenJPEG and Kakadu).
+
+The user can compare a number of different products/configurations using a number of images by specifying those parameters in the configuration file conf.xml
+
+The file takes the following parameters:
+
+1- inputPath: The directory in which the input images are stored
+2- outputPath: The directory in which the output images will be stored afterwards.
+3- softwareList: The list of programmes to be compared, for each one, the user needs to specify:
+    1- UniqueName: A unique name that will be used in the chart display
+    2- cmd: The executable to be launched
+    3- optionsString: The command line options for that executable
+    4- outputImgExtension: The extension of the resulting image files of that programme
+
+**Important notes:
+- The user can add any number of programmes to the list
+- All of the images in the input directory will be processed
+- If the output directory contains anything, it will be erased
+- The script uses the command line options -i and -o for passing input and output files to the software for now.
+
+
+Example of a conf.xml file:
+
+<params>
+
+   <inputPath>../wshop</inputPath>
+   <outputPath>../wshop_out</outputPath>
+
+
+   <softwareList>
+      <software>
+         <UniqueName>OpenJPEG</UniqueName>
+         <cmd>/home/aref/Desktop/OpenJPEG_intact/trunk-build/bin/opj_compress</cmd>
+         <optionsString>-r 5</optionsString>
+         <outputImgExtension>jp2</outputImgExtension>
+      </software>
+      <software>
+         <UniqueName>OpenJPEG Multi-T</UniqueName>
+         <cmd>/home/aref/Desktop/OpenJPEG/trunk-build/bin/opj_compress</cmd>
+         <optionsString>-r 5 -threads 100</optionsString>
+         <outputImgExtension>jp2</outputImgExtension>
+      </software>
+      <software>
+         <UniqueName>Kakadu Sing</UniqueName>
+         <cmd>kdu_compress</cmd>
+         <optionsString>-rate 4.8 -num_threads 0</optionsString>
+         <outputImgExtension>j2c</outputImgExtension>
+      </software>
+      <software>
+         <UniqueName>Kakadu Multi-T</UniqueName>
+         <cmd>kdu_compress</cmd>
+         <optionsString>-rate 4.8 -num_threads 100</optionsString>
+         <outputImgExtension>j2c</outputImgExtension>
+      </software>
+   </softwareList>
+
+</params>

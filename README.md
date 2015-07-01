@@ -1,1 +1,0 @@
-# opj-benchmark
